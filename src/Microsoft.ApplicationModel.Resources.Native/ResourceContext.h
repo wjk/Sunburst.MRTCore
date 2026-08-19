@@ -2,7 +2,7 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 #pragma once
-#include "ResourceContext.g.h"
+#include "Microsoft.ApplicationModel.Resources.ResourceContext.g.h"
 
 namespace winrt::Microsoft::ApplicationModel::Resources::implementation
 {

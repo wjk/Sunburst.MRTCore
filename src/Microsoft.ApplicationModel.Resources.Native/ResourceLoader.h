@@ -2,7 +2,7 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 #pragma once
-#include "ResourceLoader.g.h"
+#include "Microsoft.ApplicationModel.Resources.ResourceLoader.g.h"
 
 namespace winrt::Microsoft::ApplicationModel::Resources::implementation
 {
@@ -12,6 +12,7 @@ struct ResourceLoader : ResourceLoaderT<ResourceLoader>
     ResourceLoader();
     ResourceLoader(hstring const& fileName);
     ResourceLoader(hstring const& fileName, hstring const& resourceMap);
+    ~ResourceLoader();
 
     static hstring GetDefaultResourceFilePath();
 
@@ -19,7 +20,6 @@ struct ResourceLoader : ResourceLoaderT<ResourceLoader>
     hstring GetStringForUri(Windows::Foundation::Uri const& resourceUri);
 
 private:
-    ~ResourceLoader();
 
     MrmManagerHandle m_resourceManager = nullptr;
     MrmMapHandle m_currentResourceMap = nullptr;

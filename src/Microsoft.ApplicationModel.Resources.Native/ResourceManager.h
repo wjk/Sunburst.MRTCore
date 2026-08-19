@@ -2,7 +2,7 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 #pragma once
-#include "ResourceManager.g.h"
+#include "Microsoft.ApplicationModel.Resources.ResourceManager.g.h"
 
 namespace winrt::Microsoft::ApplicationModel::Resources::implementation
 {
@@ -11,6 +11,7 @@ struct ResourceManager : ResourceManagerT<ResourceManager>
 {
     ResourceManager();
     ResourceManager(hstring const& fileName);
+    ~ResourceManager();
 
     Microsoft::ApplicationModel::Resources::ResourceMap MainResourceMap();
     Microsoft::ApplicationModel::Resources::ResourceContext CreateResourceContext();
@@ -26,7 +27,6 @@ struct ResourceManager : ResourceManagerT<ResourceManager>
         hstring name);
 
 private:
-    ~ResourceManager();
     MrmManagerHandle m_resourceManagerHandle = nullptr;
     slim_mutex m_lock;
 

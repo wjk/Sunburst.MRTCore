@@ -3,7 +3,7 @@
 
 #include "pch.h"
 #include "ResourceNotFoundEventArgs.h"
-#include "ResourceNotFoundEventArgs.g.cpp"
+#include "Microsoft.ApplicationModel.Resources.ResourceNotFoundEventArgs.g.cpp"
 
 namespace winrt::Microsoft::ApplicationModel::Resources::implementation
 {

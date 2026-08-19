@@ -3,7 +3,7 @@
 
 #include "pch.h"
 #include "ResourceContext.h"
-#include "ResourceContext.g.cpp"
+#include "Microsoft.ApplicationModel.Resources.ResourceContext.g.cpp"
 #include "winrt/Windows.Globalization.h"
 
 const wchar_t c_languageQualifierName[] = L"Language";

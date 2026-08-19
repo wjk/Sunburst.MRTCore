@@ -2,7 +2,7 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 #pragma once
-#include "ResourceMap.g.h"
+#include "Microsoft.ApplicationModel.Resources.ResourceMap.g.h"
 using namespace winrt::Microsoft::ApplicationModel::Resources;
 
 namespace winrt::Microsoft::ApplicationModel::Resources::implementation

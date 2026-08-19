@@ -5,7 +5,7 @@
 #include <unknwn.h>
 #include <winrt/Windows.Foundation.h>
 #include <winrt/Windows.Foundation.Collections.h>
-#include "..\..\core\src\MRM.h"
+#include "..\..\MRM\MRM.h"
 
 struct StringResourceFreer
 {

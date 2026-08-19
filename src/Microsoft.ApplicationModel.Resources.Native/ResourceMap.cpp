@@ -4,7 +4,7 @@
 #include "pch.h"
 #include "Helper.h"
 #include "ResourceMap.h"
-#include "ResourceMap.g.cpp"
+#include "Microsoft.ApplicationModel.Resources.ResourceMap.g.cpp"
 #include "ResourceCandidate.h"
 #include "ResourceContext.h"
 #include "ResourceManager.h"

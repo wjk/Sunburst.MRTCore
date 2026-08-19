@@ -202,7 +202,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>..\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -323,6 +323,9 @@
     <ClCompile Include="StringResultImpl.cpp" />
     <ClCompile Include="UnifiedView.cpp" />
     <ClCompile Include="Util.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Windows.ImplementationLibrary" Version="1.0.260126.7" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

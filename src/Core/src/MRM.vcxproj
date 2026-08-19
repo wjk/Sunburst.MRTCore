@@ -88,7 +88,7 @@
       <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;STANDALONEDLL_EXPORTS;UNICODE;_UNICODE;DOWNLEVEL_PRIOR_TO_WIN8;WIL_SUPPRESS_PRIVATE_API_USE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <WarningLevel>Level4</WarningLevel>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>..\..\mrm\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\mrm\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>rpcrt4.lib;onecore_downlevel.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -159,6 +159,9 @@
     <ProjectReference Include="..\..\mrm\mrmmin\mrmmin.vcxproj">
       <Project>{ab199369-87e7-44b4-ae83-7cf5c068efeb}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Windows.ImplementationLibrary" Version="1.0.260126.7" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

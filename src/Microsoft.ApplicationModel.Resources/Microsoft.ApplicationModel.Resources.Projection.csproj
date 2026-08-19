@@ -1,17 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   
   <PropertyGroup>
-    <TargetFramework>net5.0-windows10.0.18362.0</TargetFramework>
+    <TargetFramework>net10.0-windows10.0.18362.0</TargetFramework>
+    <RuntimeIdentifiers>win-x64;win-x86;win-arm64</RuntimeIdentifiers>
     <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
     <Platforms>x64;x86;ARM64</Platforms>
-    <PlatformTarget>AnyCPU</PlatformTarget>
 
     <PackageId>Sunburst.MRTCore</PackageId>
     <Authors>William Kent</Authors>
     <Company>William Kent</Company>
     <Title>Standalone MRT Core</Title>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/SunburstApps/MRTCore</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/wjk/MRTCore</PackageProjectUrl>
 
     <EnableDefaultNoneItems>false</EnableDefaultNoneItems>
     <NoWarn>NU5100</NoWarn>
@@ -22,9 +22,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.CsWinRT" Version="1.2.1" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="all" />
-    <PackageReference Include="Nerdbank.GitVersioning" Version="3.4.194" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.3.1" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.400" PrivateAssets="all" />
   </ItemGroup>
   
   <ItemGroup>
@@ -34,8 +33,7 @@
 
   <PropertyGroup>
     <CSWinRTIncludes>Microsoft.ApplicationModel.Resources</CSWinRTIncludes>
-    <CSWinRTWindowsMetadata>10.0.18362.0</CSWinRTWindowsMetadata>
-  </PropertyGroup>	
+  </PropertyGroup>
 
   <ItemGroup>
     <CsWinRTInputs Include="$(OutDir)/**/*.winmd" />

@@ -1,4 +1,10 @@
 <Project>
+  <PropertyGroup>
+    <AssemblyCompany>William Kent</AssemblyCompany>
+    <AssemblyProduct>Standalone MRT Core</AssemblyProduct>
+    <AssemblyCopyright>Copyright © 2026 William Kent. All rights reserved.</AssemblyCopyright>
+  </PropertyGroup>
+  
   <ItemGroup Condition="'$(MSBuildProjectExtension)' == '.vcxproj'">
     <ProjectCapability Include="PackageReferences" />
   </ItemGroup>

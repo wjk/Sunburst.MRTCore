@@ -273,6 +273,9 @@
     <ClInclude Include="..\include\mrm\build\WriteableStringPool.h" />
     <ClInclude Include="StdAfx.h" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Windows.ImplementationLibrary" Version="1.0.260126.7" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="$(VCPKG_INSTALLATION_ROOT)\scripts\buildsystems\msbuild\vcpkg.targets" Condition="'$(VCPKG_INSTALLATION_ROOT)' != ''" />

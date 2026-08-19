@@ -28,8 +28,8 @@
   </ItemGroup>
   
   <ItemGroup>
-    <NativeProjectReference Include="..\src\Microsoft.ApplicationModel.Resources.vcxproj" CsWinRTSource="true" />
-    <NativeProjectReference Include="..\..\Core\src\MRM.vcxproj" />
+    <NativeProjectReference Include="..\Microsoft.ApplicationModel.Resources.Native\Microsoft.ApplicationModel.Resources.vcxproj" CsWinRTSource="true" />
+    <NativeProjectReference Include="..\MRM\MRM.vcxproj" />
   </ItemGroup>
 
   <PropertyGroup>

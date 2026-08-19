@@ -1,0 +1,4 @@
+<Project>
+  <Import Project="$(MSBuildProjectExtensionsPath)$(MSBuildProjectFile).*.targets"
+          Condition="'$(MSBuildProjectExtension)' == '.vcxproj' and Exists('$(MSBuildProjectExtensionsPath)$(MSBuildProjectFile).*.targets')" />
+</Project>

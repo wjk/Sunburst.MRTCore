@@ -1,0 +1,14 @@
+<Project>
+  <ItemGroup Condition="'$(MSBuildProjectExtension)' == '.vcxproj'">
+    <ProjectCapability Include="PackageReferences" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.vcxproj'">
+    <ResolveNuGetPackages>false</ResolveNuGetPackages>
+    <TargetFrameworkMoniker>native,Version=0.0</TargetFrameworkMoniker>
+    <NuGetTargetMoniker>native,Version=0.0</NuGetTargetMoniker>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildProjectExtensionsPath)$(MSBuildProjectFile).*.props"
+          Condition="'$(MSBuildProjectExtension)' == '.vcxproj' and Exists('$(MSBuildProjectExtensionsPath)$(MSBuildProjectFile).*.props')" />
+</Project>

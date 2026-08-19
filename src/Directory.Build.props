@@ -7,4 +7,8 @@
     <AssemblyProduct>Standalone MRT Core</AssemblyProduct>
     <AssemblyCopyright>Copyright © 2026 William Kent. All rights reserved.</AssemblyCopyright>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.10.91" />
+  </ItemGroup>
 </Project>

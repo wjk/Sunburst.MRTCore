@@ -163,7 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Windows.ImplementationLibrary" Version="1.0.260126.7" />
-    <PackageReference Include="Nerdbank.GitVersioning" Version="3.10.91" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

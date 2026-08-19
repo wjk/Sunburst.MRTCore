@@ -3,7 +3,7 @@
 
 #include "pch.h"
 #include "ResourceLoader.h"
-#include "Microsoft.ApplicationModel.Resources.ResourceLoader.g.cpp"
+#include "ResourceLoader.g.cpp"
 #include "Helper.h"
 
 namespace winrt::Microsoft::ApplicationModel::Resources::implementation

@@ -2,7 +2,7 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
 #pragma once
-#include "Microsoft.ApplicationModel.Resources.KnownResourceQualifierName.g.h"
+#include "KnownResourceQualifierName.g.h"
 
 namespace winrt::Microsoft::ApplicationModel::Resources::implementation
 {

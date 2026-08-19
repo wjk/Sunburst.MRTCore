@@ -3,7 +3,7 @@
 
 #include "pch.h"
 #include "KnownResourceQualifierName.h"
-#include "Microsoft.ApplicationModel.Resources.KnownResourceQualifierName.g.cpp"
+#include "KnownResourceQualifierName.g.cpp"
 
 namespace winrt::Microsoft::ApplicationModel::Resources::implementation
 {

@@ -6,7 +6,7 @@
 #include "ResourceCandidate.h"
 #include "ResourceContext.h"
 #include "ResourceManager.h"
-#include "Microsoft.ApplicationModel.Resources.ResourceManager.g.cpp"
+#include "ResourceManager.g.cpp"
 #include "ResourceMap.h"
 #include "ResourceNotFoundEventArgs.h"
 

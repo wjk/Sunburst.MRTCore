@@ -3,7 +3,7 @@
 
 #include "pch.h"
 #include "ResourceCandidate.h"
-#include "Microsoft.ApplicationModel.Resources.ResourceCandidate.g.cpp"
+#include "ResourceCandidate.g.cpp"
 
 namespace winrt::Microsoft::ApplicationModel::Resources::implementation
 {

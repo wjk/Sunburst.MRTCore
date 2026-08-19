@@ -6,6 +6,7 @@
   </Configurations>
   <Folder Name="/build/">
     <File Path="../build/Directory.Build.csproj.props" />
+    <File Path="../build/Directory.Build.csproj.targets" />
     <File Path="../build/Directory.Build.vcxproj.props" />
     <File Path="../build/Directory.Build.vcxproj.targets" />
     <File Path="../RepoRoot.props" />
@@ -13,6 +14,11 @@
     <File Path="Directory.Build.targets" />
   </Folder>
   <Project Path="Microsoft.ApplicationModel.Resources.Native/Microsoft.ApplicationModel.Resources.vcxproj" Id="6b2dbea4-f665-4880-a511-0851abd18ea3" />
+  <Project Path="Microsoft.ApplicationModel.Resources/Microsoft.ApplicationModel.Resources.Projection.csproj">
+    <Platform Solution="*|ARM64" Project="ARM64" />
+    <Platform Solution="*|x64" Project="x64" />
+    <Platform Solution="*|x86" Project="x86" />
+  </Project>
   <Project Path="MRM/MRM.vcxproj" Id="cf03cc8d-fff1-4cdc-b773-d219ad4e6f76" />
   <Project Path="mrmex/mrmex.vcxproj" Id="c3dbe42d-246e-45f1-8b66-8a8556c0784b" />
   <Project Path="mrmmin/mrmmin.vcxproj" Id="ab199369-87e7-44b4-ae83-7cf5c068efeb" />

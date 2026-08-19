@@ -1,0 +1,14 @@
+<Solution>
+  <Configurations>
+    <Platform Name="ARM64" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/build/">
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+  </Folder>
+  <Project Path="MRM/MRM.vcxproj" />
+  <Project Path="mrmex/mrmex.vcxproj" />
+  <Project Path="mrmmin/mrmmin.vcxproj" />
+</Solution>

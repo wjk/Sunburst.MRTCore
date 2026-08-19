@@ -5,6 +5,7 @@
     <RuntimeIdentifiers>win-x64;win-x86;win-arm64</RuntimeIdentifiers>
     <TargetPlatformMinVersion>10.0.17134.0</TargetPlatformMinVersion>
     <Platforms>x64;x86;ARM64</Platforms>
+    <PlatformTarget>AnyCPU</PlatformTarget>
 
     <PackageId>Sunburst.MRTCore</PackageId>
     <Authors>William Kent</Authors>
@@ -12,6 +13,7 @@
     <Title>Standalone MRT Core</Title>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/wjk/MRTCore</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
 
     <EnableDefaultNoneItems>false</EnableDefaultNoneItems>
     <NoWarn>NU5100</NoWarn>
@@ -41,7 +43,13 @@
 
   <ItemGroup>
     <None Include="Directory.Build.targets" />
-    
+
+    <Content Include="..\..\README.md">
+      <Pack>true</Pack>
+      <PackagePath></PackagePath>
+      <Link>README.md</Link>
+    </Content>
+
     <Content Include="priconfig.xml">
       <Pack>true</Pack>
       <PackagePath>build</PackagePath>

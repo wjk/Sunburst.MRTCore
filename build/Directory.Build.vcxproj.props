@@ -2,6 +2,7 @@
   <PropertyGroup>
     <OutDir>$(BaseOutputPath)$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(BaseIntermediateOutputPath)$(Platform)\$(Configuration)\</IntDir>
+    <OutDirWasSet>true</OutDirWasSet>
   </PropertyGroup>
   
   <ItemGroup>

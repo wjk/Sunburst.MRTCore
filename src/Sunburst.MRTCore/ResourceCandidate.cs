@@ -94,14 +94,16 @@ public sealed class ResourceCandidate
 
     public ResourceCandidateKind Kind => this.kind;
 
-    public IReadOnlyDictionary<string, string> QualifierValues
+    public unsafe IReadOnlyDictionary<string, string> QualifierValues
     {
         get
         {
             if (this.qualifierValueMap == null)
             {
                 ResourceCandidateKind kind;
-                IntPtr data, stringValue, qualifierNames, qualifierValues;
+                NativeMethods.MrmResourceData data;
+                IntPtr stringValue;
+                IntPtr* qualifierNames, qualifierValues;
                 uint qualifierCount;
 
                 if (this.resourceIndex == null || !this.resourceIndex.HasValue)
@@ -113,8 +115,8 @@ public sealed class ResourceCandidate
 
                     int hr = NativeMethods.MrmLoadStringOrEmbeddedResourceWithQualifierValues(
                         this.resourceManagerHandle, this.resourceContextHandle, this.resourceMapHandle,
-                        this.resourceId, out kind, out stringValue, out data, out qualifierCount,
-                        out qualifierNames, out qualifierValues);
+                        this.resourceId, out kind, out stringValue, &data, out qualifierCount,
+                        &qualifierNames, &qualifierValues);
                     Marshal.ThrowExceptionForHR(hr);
                 }
                 else
@@ -126,16 +128,16 @@ public sealed class ResourceCandidate
 
                     int hr = NativeMethods.MrmLoadStringOrEmbeddedResourceByIndexWithQualifierValues(
                         this.resourceManagerHandle, this.resourceContextHandle, this.resourceMapHandle,
-                        this.resourceIndex.Value, out kind, out stringValue, out data, out qualifierCount,
-                        out qualifierNames, out qualifierValues);
+                        this.resourceIndex.Value, out kind, out stringValue, &data, out qualifierCount,
+                        &qualifierNames, &qualifierValues);
                     Marshal.ThrowExceptionForHR(hr);
                 }
 
                 this.qualifierValueMap = new Dictionary<string, string>();
                 for (uint i = 0; i < qualifierCount; i++)
                 {
-                    string? key = Marshal.PtrToStringUni(Marshal.ReadIntPtr(qualifierNames, (int)(i * IntPtr.Size)));
-                    string? value = Marshal.PtrToStringUni(Marshal.ReadIntPtr(qualifierValues, (int)(i * IntPtr.Size)));
+                    string? key = Marshal.PtrToStringAnsi(qualifierNames[i]);
+                    string? value = Marshal.PtrToStringAnsi(qualifierValues[i]);
 
                     if (key != null && value != null)
                     {
@@ -144,9 +146,9 @@ public sealed class ResourceCandidate
                 }
 
                 NativeMethods.MrmFreeResource(stringValue);
-                NativeMethods.MrmFreeResource(qualifierNames);
-                NativeMethods.MrmFreeResource(qualifierValues);
-                NativeMethods.MrmFreeResource(data);
+                NativeMethods.MrmFreeResource((IntPtr)qualifierNames);
+                NativeMethods.MrmFreeResource((IntPtr)qualifierValues);
+                NativeMethods.MrmFreeResource(data.data);
             }
 
             return this.qualifierValueMap;

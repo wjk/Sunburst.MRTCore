@@ -25,7 +25,9 @@
     <Error Condition="HasTrailingSlash('$(MRTCoreResourceRoot)')" Text="MRTCoreResourceRoot property cannot end in a backslash" />
     <Error Condition="'$(MakePriExeFullPath)' == ''" Text="Microsoft.Windows.SDK.BuildTools NuGet package is required" />
 
-    <MRTCoreResourceRootAbsolute>$([System.IO.Path]::GetFullPath('$(MRTCoreResourceRoot)'))</MRTCoreResourceRootAbsolute>
+    <PropertyGroup>
+      <MRTCoreResourceRootAbsolute>$([System.IO.Path]::GetFullPath('$(MRTCoreResourceRoot)'))</MRTCoreResourceRootAbsolute>
+    </PropertyGroup>
 
     <Exec Command="&quot;$(MakePriExeFullPath)&quot; new /pr &quot;$(MRTCoreResourceRootAbsolute)&quot; /cf &quot;$(MRTCoreConfigurationFile)&quot; /of &quot;$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri&quot; /o" />
     <Exec Command="&quot;$(MakePriExeFullPath)&quot; resourcepack /pr &quot;$(MRTCoreResourceRootAbsolute)&quot; /cf &quot;$(MRTCoreConfigurationFile)&quot; /if &quot;$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri&quot; /of &quot;$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri&quot; /o" />

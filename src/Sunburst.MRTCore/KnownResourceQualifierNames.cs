@@ -2,14 +2,17 @@
 {
     public static class KnownResourceQualifierNames
     {
-        public static readonly string Contrast = "Contrast";
-        public static readonly string Custom = "Custom";
-        public static readonly string DeviceFamily = "DeviceFamily";
-        public static readonly string HomeRegion = "HomeRegion";
-        public static readonly string Language = "Language";
-        public static readonly string LayoutDirection = "LayoutDirection";
-        public static readonly string Scale = "Scale";
-        public static readonly string TargetSize = "TargetSize";
-        public static readonly string Theme = "Theme";
+        // NOTE: These must be implemented as properties because, if they're not, it's a
+        // binary-incompatible change to the previous (CsWinRT-based) version of this library.
+
+        public static string Contrast { get; } = "Contrast";
+        public static string Custom { get; } = "Custom";
+        public static string DeviceFamily { get; } = "DeviceFamily";
+        public static string HomeRegion { get; } = "HomeRegion";
+        public static string Language { get; } = "Language";
+        public static string LayoutDirection { get; } = "LayoutDirection";
+        public static string Scale { get; } = "Scale";
+        public static string TargetSize { get; } = "TargetSize";
+        public static string Theme { get; } = "Theme";
     }
 }

@@ -1,8 +1,0 @@
-{
-    "name": "mrtcore",
-    "version-string": "1.0",
-
-    "dependencies": [
-        "wil"
-    ]
-}

@@ -278,6 +278,9 @@
       <Project>{cf03cc8d-fff1-4cdc-b773-d219ad4e6f76}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="Microsoft.ApplicationModel.Resources.manifest" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

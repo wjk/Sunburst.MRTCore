@@ -11,6 +11,8 @@ jobs:
     steps:
     - uses: actions/checkout@v7
       name: Clone
+      with:
+        fetch-depth: 0
     - uses: actions/setup-dotnet@v6
       name: Install .NET Core
       with:
@@ -18,7 +20,7 @@ jobs:
     - uses: microsoft/setup-msbuild@v3.0.0
       name: Configure Visual Studio
     - name: Build
-      working-directory: ./src/Microsoft.ApplicationModel.Resources.Projection
+      working-directory: ./src/Sunburst.MRTCore
       run: |
         & MSBuild.exe /nologo /restore /m /p:Configuration=Release /t:Pack
     - uses: actions/upload-artifact@v7

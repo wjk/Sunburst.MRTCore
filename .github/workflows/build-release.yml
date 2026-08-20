@@ -78,7 +78,7 @@ jobs:
             - name: Generate SBOM
               uses: anchore/sbom-action@v0
               with:
-                path: bin/Sunburst.MRTCore/x64/Release
+                path: bin/Sunburst.MRTCore/Release
                 output-file: bin/Sunburst.MRTCore.spdx.json
 
             - name: Upload Release Assets

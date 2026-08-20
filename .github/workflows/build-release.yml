@@ -1,0 +1,93 @@
+name: Build Release
+
+on:
+    push:
+        tags: ['v*']
+
+permissions:
+    id-token: write
+    attestations: write
+    artifact-metadata: write
+    contents: write
+
+jobs:
+    build:
+        runs-on: windows-latest
+        timeout-minutes: 15
+
+        steps:
+            - name: Clone
+              uses: actions/checkout@v7.0.1
+              with:
+                  fetch-depth: 0
+
+            - name: Install .NET
+              uses: actions/setup-dotnet@v6.0.0
+
+            - name: Update Versions
+              id: update_version
+              run: |
+                $ref = "${{ github.ref }}"
+                if ($ref.StartsWith("refs/tags/")) {
+                  $ref = $ref.Replace("refs/tags/", "")
+                }
+
+                echo "version_no_v=$($ref.Substring(1))" >> $env:GITHUB_OUTPUT
+
+                $regex = [regex]'^v(\d+(?:\.\d+){0,2})(-.+)?$'
+                $match = $regex.Match($ref)
+                if (-not $match.Success) {
+                  Write-Error 'Malformed version number!'
+                  exit 1
+                }
+
+                $version = $match.Groups[1].Value
+                $suffix = $match.Groups[2].Value
+
+                echo "version=$version" >> $env:GITHUB_OUTPUT
+
+                if ($version.Split('.').Length -lt 2) {
+                  $version = $version + ".0"
+                }
+
+                $json = Get-Content src\version.json | ConvertFrom-Json
+                $json.version = $version + $suffix
+                $json | ConvertTo-Json | Set-Content src\version.json
+
+            - name: Nerdbank.GitVersioning
+              uses: dotnet/nbgv@master
+              id: nbgv
+              with:
+                  setAllVars: true
+
+            - name: Restore
+              working-directory: ./src
+              run: |
+                & MSBuild.exe /t:Restore
+
+            - name: Build
+              working-directory: ./src/Sunburst.MRTCore
+              run: |
+                & MSBuild.exe /nologo /m /p:Configuration=Release /p:Platform=x64 /t:Pack
+
+            - name: Generate SBOM
+              uses: anchore/sbom-action@v0
+              with:
+                path: bin/Sunburst.MRTCore/x64/Release
+                output-file: bin/Sunburst.MRTCore.spdx.json
+
+            - name: Upload Release Assets
+              uses: softprops/action-gh-release@v3.0.2
+              with:
+                draft: true
+                name: 'Standalone MRT Core ${{ steps.update_version.outputs.version_no_v }}'
+                tag_name: ${{ github.ref_name }}
+                files: |
+                  bin/Sunburst.MRTCore.spdx.json
+                  bin/Packages/Release/*.nupkg
+
+            - name: Attest Build
+              uses: actions/attest@v4.2.2
+              with:
+                subject-path: bin/Packages/Release/*.nupkg
+                sbom-path: bin/Sunburst.MRTCore.spdx.json

@@ -12,7 +12,7 @@ public sealed class ResourceNotFoundEventArgs
 
     public string Name { get; init; }
 
-    internal ResourceCandidate ResolvedCandidate { get; private set; } = null;
+    internal ResourceCandidate? ResolvedCandidate { get; private set; } = null;
 
     public void SetResolvedCandidate(ResourceCandidate candidate)
     {

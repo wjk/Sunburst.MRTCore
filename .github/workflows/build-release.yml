@@ -24,6 +24,9 @@ jobs:
             - name: Install .NET
               uses: actions/setup-dotnet@v6.0.0
 
+            - uses: microsoft/setup-msbuild@v3.0.0
+              name: Configure Visual Studio
+
             - name: Update Versions
               id: update_version
               run: |

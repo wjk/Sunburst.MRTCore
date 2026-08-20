@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "dependencies": {
+    "native,Version=v0.0": {
+      "Microsoft.Windows.ImplementationLibrary": {
+        "type": "Direct",
+        "requested": "[1.0.260126.7, )",
+        "resolved": "1.0.260126.7",
+        "contentHash": "pXT/6g9/W9uOh7NTpGpArYGSm9W0v5EWM0Njhm3YWgKf+71hii5H5aDcD539jG9IZmjT1eT1pn67n4A6zwEQ+A=="
+      },
+      "Nerdbank.GitVersioning": {
+        "type": "Direct",
+        "requested": "[3.10.91, )",
+        "resolved": "3.10.91",
+        "contentHash": "9MtEXm/um2lQAEoek1EkF4CXNH4JuXxv2jV3Ew2XlzP0LXxFaFiECS7ji8zf1ZaMnPGYbbom+Nm6y4ADc5HNHQ=="
+      },
+      "mrmmin": {
+        "type": "Project",
+        "dependencies": {
+          "Microsoft.Windows.ImplementationLibrary": "[1.0.260126.7, )"
+        }
+      }
+    }
+  }
+}

@@ -34,6 +34,7 @@
     <ItemGroup Condition="'$(_ManualPriSuffix)' == ''">
       <Content Include="$(IntermediateOutputPath)$(TargetName).pri">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <Link>$(TargetName).pri</Link>
       </Content>
     </ItemGroup>
   </Target>

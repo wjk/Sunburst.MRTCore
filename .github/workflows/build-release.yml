@@ -73,7 +73,7 @@ jobs:
             - name: Build
               working-directory: ./src/Sunburst.MRTCore
               run: |
-                & MSBuild.exe /nologo /m /p:Configuration=Release /p:Platform=x64 /t:Pack
+                & MSBuild.exe /nologo /m /p:Configuration=Release /p:Platform=AnyCPU /t:Pack
 
             - name: Generate SBOM
               uses: anchore/sbom-action@v0

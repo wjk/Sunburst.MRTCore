@@ -123,5 +123,5 @@ internal unsafe static class NativeMethods
     public static extern void MrmFreeResource(IntPtr buffer);
 
     [DllImport("MRM.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Unicode, PreserveSig = true)]
-    public static extern int MrmGetFilePathFromName(string filename, out string path);
+    public static extern int MrmGetFilePathFromName(string filename, out IntPtr path);
 }

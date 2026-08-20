@@ -10,7 +10,7 @@ public sealed class ResourceMap
     internal ResourceMap(ResourceManager manager, IntPtr managerHandle, IntPtr mapHandle)
     {
         this.resourceManager = manager;
-        this.managerHandle = manager;
+        this.managerHandle = managerHandle;
         this.mapHandle = mapHandle;
     }
 

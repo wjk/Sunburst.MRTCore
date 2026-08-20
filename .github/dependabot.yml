@@ -6,9 +6,6 @@ updates:
           interval: daily
           time: "00:00"
           timezone: America/Detroit
-      ignore:
-          # This dependency must not be bumped as doing so will cause issues in downstream projects.
-        - dependency-name: Microsoft.Windows.CSWinRT
     - package-ecosystem: github-actions
       directory: /
       schedule:

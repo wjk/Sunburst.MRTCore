@@ -1,0 +1,53 @@
+<Project>
+  <PropertyGroup>
+    <UseMRTCore Condition="'$(UseMRTCore)' == '' and '$(MRTCoreResourceRoot)' != ''">true</UseMRTCore>
+    <UseMRTCore Condition="'$(UseMRTCore)' == ''">false</UseMRTCore>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(UseMRTCore)' == 'true'">
+    <MRTCoreConfigurationFile Condition="'$(MRTCoreConfigurationFile)' == ''">$(MSBuildThisFileDirectory)\priconfig.xml</MRTCoreConfigurationFile>
+  </PropertyGroup>
+
+  <Target Name="_PrepareCreatePRIFile" Condition="'$(UseMRTCore)' == 'true'">
+    <ItemGroup>
+      <_MRTCoreInput Include="$(MRTCoreResourceRoot)\**\*.*" />
+    </ItemGroup>
+
+    <PropertyGroup>
+      <_ManualPriSuffix Condition="'$(PriProjectTaskAssembly)' != ''">.manual</_ManualPriSuffix>
+      <_ManualPriSuffix Condition="'$(PriProjectTaskAssembly)' == ''"></_ManualPriSuffix>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="CreatePRIFile" Condition="'$(UseMRTCore)' == 'true'" DependsOnTargets="_PrepareCreatePRIFile"
+          Inputs="@(_MRTCoreInput);$(MRTCoreConfigurationFile)" Outputs="$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri">
+    <Error Condition="'$(MRTCoreResourceRoot)' == ''" Text="MRTCoreResourceRoot must be set" />
+    <Error Condition="HasTrailingSlash('$(MRTCoreResourceRoot)')" Text="MRTCoreResourceRoot property cannot end in a backslash" />
+    <Error Condition="'$(MakePriExeFullPath)' == ''" Text="Microsoft.Windows.SDK.BuildTools NuGet package is required" />
+
+    <PropertyGroup>
+      <MRTCoreResourceRootAbsolute>$([System.IO.Path]::GetFullPath('$(MRTCoreResourceRoot)'))</MRTCoreResourceRootAbsolute>
+    </PropertyGroup>
+
+    <Exec Command="&quot;$(MakePriExeFullPath)&quot; new /pr &quot;$(MRTCoreResourceRootAbsolute)&quot; /cf &quot;$(MRTCoreConfigurationFile)&quot; /of &quot;$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri&quot; /o" />
+    <Exec Command="&quot;$(MakePriExeFullPath)&quot; resourcepack /pr &quot;$(MRTCoreResourceRootAbsolute)&quot; /cf &quot;$(MRTCoreConfigurationFile)&quot; /if &quot;$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri&quot; /of &quot;$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri&quot; /o" />
+
+    <ItemGroup>
+      <_PriFile Include="$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri" />
+      <FileWrites Include="$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(_ManualPriSuffix)' == ''">
+      <Content Include="$(IntermediateOutputPath)$(TargetName).pri">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <Link>$(TargetName).pri</Link>
+      </Content>
+    </ItemGroup>
+  </Target>
+  <PropertyGroup>
+    <PrepareResourcesDependsOn>
+      CreatePRIFile;
+      $(PrepareResourcesDependsOn)
+    </PrepareResourcesDependsOn>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Microsoft.ApplicationModel.Resources</RootNamespace>
+
+    <PackageId>Sunburst.MRTCore</PackageId>
+    <Authors>William Kent</Authors>
+    <Company>William Kent</Company>
+    <Title>Standalone MRT Core</Title>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/wjk/MRTCore</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+
+    <EnableDefaultNoneItems>false</EnableDefaultNoneItems>
+    <NoWarn>NU5100</NoWarn>
+
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.400" PrivateAssets="all" />
+    <NativeProjectReference Include="..\MRM\MRM.vcxproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Directory.Build.targets" />
+
+    <Content Include="..\..\README.md">
+      <Pack>true</Pack>
+      <PackagePath></PackagePath>
+      <Link>README.md</Link>
+    </Content>
+
+    <Content Include="priconfig.xml">
+      <Pack>true</Pack>
+      <PackagePath>build</PackagePath>
+    </Content>
+    <Content Include="Sunburst.MRTCore.props">
+      <Pack>true</Pack>
+      <PackagePath>build</PackagePath>
+    </Content>
+    <Content Include="Sunburst.MRTCore.targets">
+      <Pack>true</Pack>
+      <PackagePath>build</PackagePath>
+    </Content>
+  </ItemGroup>
+
+</Project>

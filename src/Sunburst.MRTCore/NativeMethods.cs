@@ -63,7 +63,7 @@ internal unsafe static class NativeMethods
     [DllImport("MRM.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Unicode, PreserveSig = true)]
     public static extern int MrmSetQualifier(IntPtr contextHandle, string qualifierName, string value);
 
-    [DllImport("MMR.dll", CallingConvention = CallingConvention.StdCall, PreserveSig = true)]
+    [DllImport("MRM.dll", CallingConvention = CallingConvention.StdCall, PreserveSig = true)]
     public static extern void MrmDestroyResourceContext(IntPtr contextHandle);
 
     [DllImport("MRM.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Unicode, PreserveSig = true)]

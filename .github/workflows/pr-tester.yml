@@ -11,6 +11,8 @@ jobs:
     steps:
     - uses: actions/checkout@v7
       name: Clone
+      with:
+        fetch-depth: 0
     - uses: actions/setup-dotnet@v6
       name: Install .NET Core
       with:

@@ -8,21 +8,25 @@
     <MRTCoreConfigurationFile Condition="'$(MRTCoreConfigurationFile)' == ''">$(MSBuildThisFileDirectory)\priconfig.xml</MRTCoreConfigurationFile>
   </PropertyGroup>
 
-  <Target Name="CreatePRIFile" Condition="'$(UseMRTCore)' == 'true'"
-          Inputs="$(MRTCoreResourceRoot)\**\*.*" Outputs="$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri">
-    <Error Condition="'$(MRTCoreResourceRoot)' == ''" Text="MRTCoreResourceRoot must be set" />
-    <Error Condition="HasTrailingSlash('$(MRTCoreResourceRoot)')" Text="MRTCoreResourceRoot property cannot end in a backslash" />
-    <Error Condition="'$(MakePriExeFullPath)' == ''" Text="Microsoft.Windows.SDK.BuildTools NuGet package is required, please add it to your csproj" />
+  <Target Name="_PrepareCreatePRIFile" Condition="'$(UseMRTCore)' == 'true'">
+    <ItemGroup>
+      <_MRTCoreInput Include="$(MRTCoreResourceRoot)\**\*.*" />
+    </ItemGroup>
 
     <PropertyGroup>
       <_ManualPriSuffix Condition="'$(PriProjectTaskAssembly)' != ''">.manual</_ManualPriSuffix>
       <_ManualPriSuffix Condition="'$(PriProjectTaskAssembly)' == ''"></_ManualPriSuffix>
     </PropertyGroup>
+  </Target>
 
-    <PropertyGroup>
-      <MRTCoreResourceRootAbsolute>$([System.IO.Path]::GetFullPath('$(MRTCoreResourceRoot)'))</MRTCoreResourceRootAbsolute>
-    </PropertyGroup>
-    
+  <Target Name="CreatePRIFile" Condition="'$(UseMRTCore)' == 'true'" DependsOnTargets="_PrepareCreatePRIFile"
+          Inputs="@(_MRTCoreInput);$(MRTCoreConfigurationFile)" Outputs="$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri">
+    <Error Condition="'$(MRTCoreResourceRoot)' == ''" Text="MRTCoreResourceRoot must be set" />
+    <Error Condition="HasTrailingSlash('$(MRTCoreResourceRoot)')" Text="MRTCoreResourceRoot property cannot end in a backslash" />
+    <Error Condition="'$(MakePriExeFullPath)' == ''" Text="Microsoft.Windows.SDK.BuildTools NuGet package is required, please add it to your csproj" />
+
+    <MRTCoreResourceRootAbsolute>$([System.IO.Path]::GetFullPath('$(MRTCoreResourceRoot)'))</MRTCoreResourceRootAbsolute>
+
     <Exec Command="&quot;$(MakePriExeFullPath)&quot; new /pr &quot;$(MRTCoreResourceRootAbsolute)&quot; /cf &quot;$(MRTCoreConfigurationFile)&quot; /of &quot;$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri&quot; /o" />
     <Exec Command="&quot;$(MakePriExeFullPath)&quot; resourcepack /pr &quot;$(MRTCoreResourceRootAbsolute)&quot; /cf &quot;$(MRTCoreConfigurationFile)&quot; /if &quot;$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri&quot; /of &quot;$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri&quot; /o" />
 

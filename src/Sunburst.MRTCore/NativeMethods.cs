@@ -52,12 +52,10 @@ internal static class NativeMethods
     public static extern int MrmCreateResourceContext(IntPtr managerHandle, out IntPtr contextHandle);
 
     [DllImport("MRM.dll", CallingConvention = CallingConvention.StdCall, PreserveSig = true)]
-    public static extern void MrmFreeQualifierNamesOrValues(uint size,
-        [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPWStr, SizeParamIndex = 0)] string[] names);
+    public static extern void MrmFreeQualifierNamesOrValues(uint size, IntPtr names);
 
     [DllImport("MRM.dll", CallingConvention = CallingConvention.StdCall, PreserveSig = true)]
-    public static extern int MrmGetAllQualifierNames(IntPtr contextHandle, uint size,
-        [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPWStr, SizeParamIndex = 0)] ref string[] names);
+    public static extern int MrmGetAllQualifierNames(IntPtr contextHandle, uint size, out IntPtr names);
 
     [DllImport("MRM.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Unicode, PreserveSig = true)]
     public static extern int MrmGetQualifier(IntPtr contextHandle, string qualifierName, out string value);
@@ -86,40 +84,37 @@ internal static class NativeMethods
 
     [DllImport("MRM.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Unicode, PreserveSig = true)]
     public static extern int MrmLoadEmbeddedResource(IntPtr managerHandle, [Optional] IntPtr contextHandle,
-        [Optional] IntPtr mapHandle, string resourceId, out MrmResourceData data);
+        [Optional] IntPtr mapHandle, string resourceId, out IntPtr data);
 
     [DllImport("MRM.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Unicode, PreserveSig = true)]
     public static extern int MrmLoadEmbeddedResourceFromResourceUri(IntPtr managerHandle,
-        [Optional] IntPtr contextHandle, [Optional] IntPtr mapHandle, string uri, out MrmResourceData data);
+        [Optional] IntPtr contextHandle, [Optional] IntPtr mapHandle, string uri, out IntPtr data);
 
     [DllImport("MRM.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Unicode, PreserveSig = true)]
     public static extern int MrmLoadStringOrEmbeddedResource(IntPtr managerHandle, [Optional] IntPtr contextHandle,
         [Optional] IntPtr mapHandle, string resourceId, out ResourceCandidateKind kind,
-        [Optional] out string stringValue, out MrmResourceData dataValue);
+        out IntPtr stringValue, out IntPtr dataValue);
 
     [DllImport("MRM.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Unicode, PreserveSig = true)]
     public static extern int MrmLoadStringOrEmbeddedResourceWithQualifierValues(IntPtr managerHandle, [Optional] IntPtr contextHandle,
-        [Optional] IntPtr mapHandle, string resourceId, out ResourceCandidateKind kind, [Optional] out string stringValue,
-        out MrmResourceData data, out uint qualifierCount,
-        [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPWStr, SizeParamIndex = 7)] out string[] qualifierNames,
-        [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPWStr, SizeParamIndex = 7)] out string[] qualifierValues);
+        [Optional] IntPtr mapHandle, string resourceId, out ResourceCandidateKind kind, [Optional] out IntPtr stringValue,
+        out IntPtr data, out uint qualifierCount, out IntPtr qualifierNames, out IntPtr qualifierValues);
 
     [DllImport("MRM.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Unicode, PreserveSig = true)]
     public static extern int MrmLoadStringOrEmbeddedResourceFromResourceUri(IntPtr managerHandle,
         [Optional] IntPtr contexthandle, [Optional] IntPtr mapHandle, string resourceUri, out ResourceCandidateKind kind,
-        [Optional] out string resourceString, out MrmResourceData data);
+        [Optional] out IntPtr resourceString, out IntPtr data);
 
     [DllImport("MRM.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Unicode, PreserveSig = true)]
     public static extern int MrmLoadStringOrEmbeddedResourceByIndex(IntPtr managerHandle, [Optional] IntPtr contextHandle,
-        [Optional] IntPtr mapHandle, uint index, out ResourceCandidateKind kind, [Optional] out string stringValue,
-        out MrmResourceData data);
+        [Optional] IntPtr mapHandle, uint index, out ResourceCandidateKind kind, [Optional] out IntPtr stringValue,
+        out IntPtr data);
 
     [DllImport("MRM.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Unicode, PreserveSig = true)]
     public static extern int MrmLoadStringOrEmbeddedResourceByIndexWithQualifierValues(IntPtr managerHandle,
         [Optional] IntPtr contextHandle, [Optional] IntPtr mapHandle, uint index, out ResourceCandidateKind kind,
-        [Optional] out string stringValue, out MrmResourceData data, out uint qualifierCount,
-        [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPWStr, SizeParamIndex = 7)] out string[] qualifierNames,
-        [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPWStr, SizeParamIndex = 7)] out string[] qualifierValues);
+        [Optional] out IntPtr stringValue, out IntPtr data, out uint qualifierCount,
+        out IntPtr qualifierNames, out IntPtr qualifierValues);
 
     [DllImport("MRM.dll", CallingConvention = CallingConvention.StdCall, PreserveSig = true)]
     public static extern IntPtr MrmAllocateBuffer(uint size);

@@ -2,6 +2,7 @@
   <PropertyGroup Condition="'$(MRTCoreResourceRoot)' != ''">
     <EnableCoreMrtTooling>false</EnableCoreMrtTooling>
     <DisableEmbeddedXbf>false</DisableEmbeddedXbf>
+    <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(MRTCoreResourceRoot)' != ''">

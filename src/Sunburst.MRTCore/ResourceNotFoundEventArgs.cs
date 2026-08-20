@@ -2,21 +2,17 @@
 
 public sealed class ResourceNotFoundEventArgs
 {
-    public ResourceContext ResourceContext
+    internal ResourceNotFoundEventArgs(ResourceContext context, string name)
     {
-        get
-        {
-            throw new NotImplementedException();
-        }
+        this.ResourceContext = context;
+        this.Name = name;
     }
 
-    public string Name
-    {
-        get
-        {
-            throw new NotImplementedException();
-        }
-    }
+    public ResourceContext ResourceContext { get; init; }
+
+    public string Name { get; init; }
+
+    internal ResourceCandidate ResolvedCandidate { get; private set; } = null;
 
     public void SetResolvedCandidate(ResourceCandidate candidate)
     {

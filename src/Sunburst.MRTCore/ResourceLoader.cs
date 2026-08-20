@@ -2,6 +2,9 @@
 
 public sealed class ResourceLoader
 {
+    private IntPtr resourceManagerHandle = IntPtr.Zero;
+    private IntPtr resourceMapHandle = IntPtr.Zero;
+
     public ResourceLoader()
     {
         throw new NotImplementedException();
@@ -13,6 +16,11 @@ public sealed class ResourceLoader
     }
 
     public ResourceLoader(string filename, string resourceMap)
+    {
+        throw new NotImplementedException();
+    }
+
+    ~ResourceLoader()
     {
         throw new NotImplementedException();
     }

@@ -2,6 +2,18 @@
 
 public sealed class ResourceMap
 {
+    private readonly ResourceManager resourceManager;
+    private readonly IntPtr managerHandle;
+    private readonly IntPtr mapHandle;
+    private uint? resourceCount = null;
+
+    internal ResourceMap(ResourceManager manager, IntPtr managerHandle, IntPtr mapHandle)
+    {
+        this.resourceManager = manager;
+        this.managerHandle = manager;
+        this.mapHandle = mapHandle;
+    }
+
     public uint ResourceCount
     {
         get
@@ -36,6 +48,16 @@ public sealed class ResourceMap
     }
 
     public ResourceCandidate TryGetValue(string name, ResourceContext context)
+    {
+        throw new NotImplementedException();
+    }
+
+    private ResourceCandidate GetValueImpl(ResourceContext context, string resource, bool treatNotFoundAsOK)
+    {
+        throw new NotImplementedException();
+    }
+
+    private KeyValuePair<string, ResourceCandidate> GetValueByIndexImpl(ResourceCandidate context, uint index)
     {
         throw new NotImplementedException();
     }

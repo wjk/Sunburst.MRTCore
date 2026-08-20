@@ -2,13 +2,7 @@
   <PropertyGroup>
     <UseMRTCore Condition="'$(UseMRTCore)' == '' and '$(MRTCoreResourceRoot)' != ''">true</UseMRTCore>
     <UseMRTCore Condition="'$(UseMRTCore)' == ''">false</UseMRTCore>
-
-    <MakePriPackageVersion Condition="'$(MakePriPackageVersion)' == ''">10.0.28000.2526</MakePriPackageVersion>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$(MakePriPackageVersion)" />
-  </ItemGroup>
 
   <PropertyGroup Condition="'$(UseMRTCore)' == 'true'">
     <MRTCoreConfigurationFile Condition="'$(MRTCoreConfigurationFile)' == ''">$(MSBuildThisFileDirectory)\priconfig.xml</MRTCoreConfigurationFile>
@@ -18,6 +12,7 @@
           Inputs="$(MRTCoreResourceRoot)\**\*.*" Outputs="$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri">
     <Error Condition="'$(MRTCoreResourceRoot)' == ''" Text="MRTCoreResourceRoot must be set" />
     <Error Condition="HasTrailingSlash('$(MRTCoreResourceRoot)')" Text="MRTCoreResourceRoot property cannot end in a backslash" />
+    <Error Condition="'$(MakePriExeFullPath)' == ''" Text="Microsoft.Windows.SDK.BuildTools NuGet package is required, please add it to your csproj" />
 
     <PropertyGroup>
       <_ManualPriSuffix Condition="'$(PriProjectTaskAssembly)' != ''">.manual</_ManualPriSuffix>

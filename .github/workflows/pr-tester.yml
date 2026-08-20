@@ -38,7 +38,7 @@ jobs:
     - name: Build
       working-directory: ./src/Sunburst.MRTCore
       run: |
-        & MSBuild.exe /nologo /restore /m /p:Configuration=Release /t:Pack
+        & MSBuild.exe /nologo /m /p:Configuration=Release /t:Pack
 
     - uses: actions/upload-artifact@v7
       name: Upload Assets

@@ -55,7 +55,7 @@ internal static class NativeMethods
     public static extern void MrmFreeQualifierNamesOrValues(uint size, IntPtr names);
 
     [DllImport("MRM.dll", CallingConvention = CallingConvention.StdCall, PreserveSig = true)]
-    public static extern int MrmGetAllQualifierNames(IntPtr contextHandle, uint size, out IntPtr names);
+    public static extern int MrmGetAllQualifierNames(IntPtr contextHandle, out uint size, out IntPtr names);
 
     [DllImport("MRM.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Unicode, PreserveSig = true)]
     public static extern int MrmGetQualifier(IntPtr contextHandle, string qualifierName, out string value);

@@ -3,10 +3,18 @@ name: Test PR Build
 on:
   pull_request:
     branches: [main]
+    paths:
+      - src/**
+      - .github/workflows/pr-tester.yml
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: windows-latest
+    timeout-minutes: 15
 
     steps:
     - uses: actions/checkout@v7

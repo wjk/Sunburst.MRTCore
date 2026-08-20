@@ -11,10 +11,15 @@
     <Authors>William Kent</Authors>
     <Company>William Kent</Company>
     <Title>Standalone MRT Core</Title>
+    <Copyright>Copyright © 2026 William Kent. All rights reserved.</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/wjk/MRTCore</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
 
+    <!-- This must all be on one line because the NuGet packing process doesn't strip whitespace properly. -->
+    <PackageDescription>This repository contains a copy of MRT Core, packaged so it can be used separately from WinUI 3. It also includes a set of MSBuild targets that create a self-contained PRI file from the contents of a given folder, for use with MRT Core.</PackageDescription>
+
+    <AssemblyTitle>$(Title)</AssemblyTitle>
     <EnableDefaultNoneItems>false</EnableDefaultNoneItems>
     <NoWarn>NU5100</NoWarn>
 

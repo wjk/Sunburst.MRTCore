@@ -40,20 +40,4 @@
   <PropertyGroup>
     <PrepareResourcesDependsOn>BuildCrossReferences;$(PrepareResourcesDependsOn)</PrepareResourcesDependsOn>
   </PropertyGroup>
-
-  <Target Name="CsWinRTGetReferenceWinMDFiles" BeforeTargets="CsWinRTGenerateProjection">
-    <PropertyGroup>
-      <_NativePlatform Condition="'$(Platform)' == 'x86' or '$(Platform)' == 'AnyCPU'">Win32</_NativePlatform>
-      <_NativePlatform Condition="'$(_NativePlatform)' == ''">$(Platform)</_NativePlatform>
-    </PropertyGroup>
-
-    <MSBuild Projects="@(NativeProjectReference)" Targets="Build" Condition="'%(NativeProjectReference.CsWinRTSource)' == 'true'"
-             Properties="Platform=$(_NativePlatform);Configuration=$(Configuration)">
-      <Output TaskParameter="TargetOutputs" ItemName="CsWinRTProjectOutputs" />
-    </MSBuild>
-
-    <ItemGroup>
-      <CSWinRTInputs Include="@(CsWinRTProjectOutputs)" Condition="'%(Extension)' == '.winmd'" />
-    </ItemGroup>
-  </Target>
 </Project>

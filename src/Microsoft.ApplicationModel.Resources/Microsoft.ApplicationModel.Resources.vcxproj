@@ -156,7 +156,7 @@
       <ModuleDefinitionFile>Microsoft.ApplicationModel.Resources.def</ModuleDefinitionFile>
     </Link>
     <Manifest>
-      <EnableSegmentHeap>true</EnableSegmentHeap>
+      <EnableSegmentHeap>false</EnableSegmentHeap>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -179,7 +179,7 @@
       <ModuleDefinitionFile>Microsoft.ApplicationModel.Resources.def</ModuleDefinitionFile>
     </Link>
     <Manifest>
-      <EnableSegmentHeap>true</EnableSegmentHeap>
+      <EnableSegmentHeap>false</EnableSegmentHeap>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -200,7 +200,7 @@
       <ModuleDefinitionFile>Microsoft.ApplicationModel.Resources.def</ModuleDefinitionFile>
     </Link>
     <Manifest>
-      <EnableSegmentHeap>true</EnableSegmentHeap>
+      <EnableSegmentHeap>false</EnableSegmentHeap>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -223,7 +223,7 @@
       <ModuleDefinitionFile>Microsoft.ApplicationModel.Resources.def</ModuleDefinitionFile>
     </Link>
     <Manifest>
-      <EnableSegmentHeap>true</EnableSegmentHeap>
+      <EnableSegmentHeap>false</EnableSegmentHeap>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
@@ -244,7 +244,7 @@
       <ModuleDefinitionFile>Microsoft.ApplicationModel.Resources.def</ModuleDefinitionFile>
     </Link>
     <Manifest>
-      <EnableSegmentHeap>true</EnableSegmentHeap>
+      <EnableSegmentHeap>false</EnableSegmentHeap>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
@@ -267,7 +267,7 @@
       <ModuleDefinitionFile>Microsoft.ApplicationModel.Resources.def</ModuleDefinitionFile>
     </Link>
     <Manifest>
-      <EnableSegmentHeap>true</EnableSegmentHeap>
+      <EnableSegmentHeap>false</EnableSegmentHeap>
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>

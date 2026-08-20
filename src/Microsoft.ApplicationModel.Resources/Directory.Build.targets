@@ -11,4 +11,15 @@
       </ClCompile>
     </ItemGroup>
   </Target>
+
+  <Target Name="CppWinRTGenerateManifest" DependsOnTargets="CppWinRTMakeComponentProjection" AfterTargets="BuildGenerateSources"
+          Inputs="@(CppWinRTMdMergeInputs)" Outputs="@(CppWinRTMdMergeInputs -> '$(IntDir)%(FileName).winmd.manifest')"
+          Condition="'@(CppWinRTMdMergeInputs)' != ''">
+    <Exec Command="mt.exe -nologo &quot;-winmd:%(CppWinRTMdMergeInputs.FullPath)&quot; -dll:$(TargetName)$(TargetExt) -out:%(CppWinRTMdMergeInputs.FileName).winmd.manifest"
+          WorkingDirectory="$(IntDir)" />
+
+    <ItemGroup>
+      <Manifest Include="@(CppWinRTMdMergeInputs -> '$(IntDir)%(FileName).winmd.manifest')" />
+    </ItemGroup>
+  </Target>
 </Project>

@@ -31,9 +31,9 @@ jobs:
       name: Configure Visual Studio
 
     - name: Restore
-        working-directory: ./src
-        run: |
-          & MSBuild.exe /t:Restore
+      working-directory: ./src
+      run: |
+        & MSBuild.exe /t:Restore
 
     - name: Build
       working-directory: ./src/Sunburst.MRTCore

@@ -23,7 +23,7 @@
           Inputs="@(_MRTCoreInput);$(MRTCoreConfigurationFile)" Outputs="$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri">
     <Error Condition="'$(MRTCoreResourceRoot)' == ''" Text="MRTCoreResourceRoot must be set" />
     <Error Condition="HasTrailingSlash('$(MRTCoreResourceRoot)')" Text="MRTCoreResourceRoot property cannot end in a backslash" />
-    <Error Condition="'$(MakePriExeFullPath)' == ''" Text="Microsoft.Windows.SDK.BuildTools NuGet package is required, please add it to your csproj" />
+    <Error Condition="'$(MakePriExeFullPath)' == ''" Text="Microsoft.Windows.SDK.BuildTools NuGet package is required" />
 
     <MRTCoreResourceRootAbsolute>$([System.IO.Path]::GetFullPath('$(MRTCoreResourceRoot)'))</MRTCoreResourceRootAbsolute>
 

@@ -18,6 +18,8 @@ public sealed class ResourceContext
         NativeMethods.MrmDestroyResourceContext(this.resourceContextHandle);
     }
 
+    internal IntPtr ContextHandle => this.resourceContextHandle;
+
     public IDictionary<string, string> QualifierValues
     {
         get

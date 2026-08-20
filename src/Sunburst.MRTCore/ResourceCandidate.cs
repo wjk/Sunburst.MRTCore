@@ -33,7 +33,7 @@ public sealed class ResourceCandidate
         this.kind = ResourceCandidateKind.EmbeddedData;
     }
 
-    internal ResourceCandidate(IntPtr managerHandle, IntPtr contextHandle, IntPtr mapHandle, uint index, string id, ResourceCandidateKind kind, string data)
+    internal ResourceCandidate(IntPtr managerHandle, IntPtr contextHandle, IntPtr mapHandle, uint? index, string id, ResourceCandidateKind kind, string data)
     {
         this.resourceManagerHandle = managerHandle;
         this.resourceContextHandle = contextHandle;
@@ -45,7 +45,7 @@ public sealed class ResourceCandidate
         this.blobData = Array.Empty<byte>();
     }
 
-    internal ResourceCandidate(IntPtr managerHandle, IntPtr contextHandle, IntPtr mapHandle, uint index, string id, ResourceCandidateKind kind, byte[] data)
+    internal ResourceCandidate(IntPtr managerHandle, IntPtr contextHandle, IntPtr mapHandle, uint? index, string id, ResourceCandidateKind kind, byte[] data)
     {
         this.resourceManagerHandle = managerHandle;
         this.resourceContextHandle = contextHandle;

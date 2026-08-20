@@ -18,12 +18,12 @@ jobs:
     - uses: microsoft/setup-msbuild@v1.0.2
       name: Configure Visual Studio
     - name: Build
-      working-directory: ./src/Microsoft.ApplicationModel.Resources/projection
+      working-directory: ./src/Microsoft.ApplicationModel.Resources.Projection
       run: |
         & MSBuild.exe /nologo /restore /m /p:Configuration=Release /t:Pack
     - uses: actions/upload-artifact@v2
       name: Upload Assets
       with:
         name: nuget
-        path: src/Microsoft.ApplicationModel.Resources/projection/bin/Release/*.nupkg
+        path: bin/Packages/Release/*.nupkg
         if-no-files-found: error

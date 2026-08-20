@@ -107,8 +107,8 @@ internal unsafe static class NativeMethods
 
     [DllImport("MRM.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Unicode, PreserveSig = true)]
     public static extern int MrmLoadStringOrEmbeddedResourceByIndex(IntPtr managerHandle, [Optional] IntPtr contextHandle,
-        [Optional] IntPtr mapHandle, uint index, out ResourceCandidateKind kind, [Optional] out IntPtr stringValue,
-        MrmResourceData* data);
+        [Optional] IntPtr mapHandle, uint index, out ResourceCandidateKind kind, [Optional] out IntPtr resourceName,
+        [Optional] out IntPtr stringValue, MrmResourceData* data);
 
     [DllImport("MRM.dll", CallingConvention = CallingConvention.StdCall, CharSet = CharSet.Unicode, PreserveSig = true)]
     public static extern int MrmLoadStringOrEmbeddedResourceByIndexWithQualifierValues(IntPtr managerHandle,

@@ -2,40 +2,34 @@
   <PropertyGroup>
     <UseMRTCore Condition="'$(UseMRTCore)' == '' and '$(MRTCoreResourceRoot)' != ''">true</UseMRTCore>
     <UseMRTCore Condition="'$(UseMRTCore)' == ''">false</UseMRTCore>
+
+    <MakePriPackageVersion Condition="'$(MakePriPackageVersion)' == ''">10.0.28000.2526</MakePriPackageVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="$(MakePriPackageVersion)" />
+  </ItemGroup>
 
   <PropertyGroup Condition="'$(UseMRTCore)' == 'true'">
     <MRTCoreConfigurationFile Condition="'$(MRTCoreConfigurationFile)' == ''">$(MSBuildThisFileDirectory)\priconfig.xml</MRTCoreConfigurationFile>
   </PropertyGroup>
 
-  <Target Name="LocateMakePriExe" Condition="'$(UseMRTCore)' == 'true'" DependsOnTargets="PrepareForBuild">
-    <PropertyGroup>
-      <WindowsSdkDir Condition="'$(WindowsSdkDir)' == ''">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v10.0@InstallationFolder)</WindowsSdkDir>
-      <WindowsSdkDir Condition="'$(WindowsSdkDir)' == ''">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Microsoft SDKs\Windows\v10.0@InstallationFolder)</WindowsSdkDir>
-    </PropertyGroup>
-
-    <PropertyGroup>
-      <MakePRIVersion Condition="'$(MakePRIVersion)' == ''">10.0.18362.0</MakePRIVersion>
-      <MakePRIPath>$(WindowsSdkDir)bin\$(MakePRIVersion)\x64\makepri.exe</MakePRIPath>
-    </PropertyGroup>
-
-    <PropertyGroup>
-      <_ManualPriSuffix Condition="'$(PriProjectTaskAssembly)' != ''">.manual</_ManualPriSuffix>
-      <_ManualPriSuffix Condition="'$(PriProjectTaskAssembly)' == ''"></_ManualPriSuffix>
-    </PropertyGroup>
-  </Target>
-
-  <Target Name="CreatePRIFile" Condition="'$(UseMRTCore)' == 'true'" DependsOnTargets="LocateMakePriExe"
+  <Target Name="CreatePRIFile" Condition="'$(UseMRTCore)' == 'true'"
           Inputs="$(MRTCoreResourceRoot)\**\*.*" Outputs="$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri">
     <Error Condition="'$(MRTCoreResourceRoot)' == ''" Text="MRTCoreResourceRoot must be set" />
     <Error Condition="HasTrailingSlash('$(MRTCoreResourceRoot)')" Text="MRTCoreResourceRoot property cannot end in a backslash" />
 
     <PropertyGroup>
+      <_ManualPriSuffix Condition="'$(PriProjectTaskAssembly)' != ''">.manual</_ManualPriSuffix>
+      <_ManualPriSuffix Condition="'$(PriProjectTaskAssembly)' == ''"></_ManualPriSuffix>
+    </PropertyGroup>
+
+    <PropertyGroup>
       <MRTCoreResourceRootAbsolute>$([System.IO.Path]::GetFullPath('$(MRTCoreResourceRoot)'))</MRTCoreResourceRootAbsolute>
     </PropertyGroup>
     
-    <Exec Command="&quot;$(MakePRIPath)&quot; new /pr &quot;$(MRTCoreResourceRootAbsolute)&quot; /cf &quot;$(MRTCoreConfigurationFile)&quot; /of &quot;$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri&quot; /o" />
-    <Exec Command="&quot;$(MakePRIPath)&quot; resourcepack /pr &quot;$(MRTCoreResourceRootAbsolute)&quot; /cf &quot;$(MRTCoreConfigurationFile)&quot; /if &quot;$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri&quot; /of &quot;$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri&quot; /o" />
+    <Exec Command="&quot;$(MakePriExeFullPath)&quot; new /pr &quot;$(MRTCoreResourceRootAbsolute)&quot; /cf &quot;$(MRTCoreConfigurationFile)&quot; /of &quot;$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri&quot; /o" />
+    <Exec Command="&quot;$(MakePriExeFullPath)&quot; resourcepack /pr &quot;$(MRTCoreResourceRootAbsolute)&quot; /cf &quot;$(MRTCoreConfigurationFile)&quot; /if &quot;$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri&quot; /of &quot;$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri&quot; /o" />
 
     <ItemGroup>
       <_PriFile Include="$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri" />

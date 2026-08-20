@@ -4,6 +4,8 @@ This repository contains a copy of [MRT Core](https://github.com/microsoft/Proje
 
 The C++/WinRT-based implementation of the API for MRT Core, as well as the C#/WinRT-based wrapper, has been removed and rewritten in pure C#. This is because the old C++ implementation depended on registration-free SxS-based WinRT to work, which is completely incompatible with the multiple-architecture basis of this repository's NuGet package.
 
+**Security note:** Versions of this package before 2.0.1 were author signed. Versions 2.0.1 and later will not be, because my signing certificate expired and I cannot afford to get a new one.
+
 ## Using This Library
 
 After you add this package to your project, you need to specify a `$(MRTCoreResourceRoot)` in your csproj. This is a directory, normally next to your project file, that contains the resources you want compiled into a PRI file. Everything in this directory tree will be compiled into the PRI. Strings should be placed in a `*.resjson` file. This file contains a simple dictionary where the keys are the identifiers used to look up the strings and the values are the strings. To localize strings, vary images by DPI, and so on, use the same filename conventions as are used with WinUI 3 and the standalone MSIX build tools (described in the Microsoft documentation).

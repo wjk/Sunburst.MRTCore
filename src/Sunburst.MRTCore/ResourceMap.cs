@@ -85,7 +85,7 @@ public sealed class ResourceMap
         // Always use a context as we override the languages.
         ResourceContext resourceContext = context ?? this.resourceManager.CreateResourceContext();
 
-        if (this.managerHandle != IntPtr.Zero)
+        if (this.managerHandle == IntPtr.Zero)
         {
             // Resource is not managed by MRT. Handle with event handler.
             ResourceCandidate? candidate = this.resourceManager.HandleResourceNotFound(resourceContext, resource);

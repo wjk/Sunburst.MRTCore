@@ -21,16 +21,25 @@ jobs:
       name: Clone
       with:
         fetch-depth: 0
+
     - uses: actions/setup-dotnet@v6
       name: Install .NET Core
       with:
-        dotnet-version: 5.0.100
+        dotnet-version: 10.0.400
+
     - uses: microsoft/setup-msbuild@v3.0.0
       name: Configure Visual Studio
+
+    - name: Restore
+        working-directory: ./src
+        run: |
+          & MSBuild.exe /t:Restore
+
     - name: Build
       working-directory: ./src/Sunburst.MRTCore
       run: |
         & MSBuild.exe /nologo /restore /m /p:Configuration=Release /t:Pack
+
     - uses: actions/upload-artifact@v7
       name: Upload Assets
       with:

@@ -18,7 +18,4 @@
 
   <Import Project="$(MSBuildProjectExtensionsPath)$(MSBuildProjectFile).*.props"
           Condition="Exists('$(MSBuildProjectExtensionsPath)$(MSBuildProjectFile).*.props')" />
-
-  <Import Project="vcxproj\DetectCI.props" />
-  <Import Project="vcxproj\DeterministicBuild.props" />
 </Project>

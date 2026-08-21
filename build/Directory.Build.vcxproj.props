@@ -13,6 +13,7 @@
     <ResolveNuGetPackages>false</ResolveNuGetPackages>
     <TargetFrameworkMoniker>native,Version=0.0</TargetFrameworkMoniker>
     <NuGetTargetMoniker>native,Version=0.0</NuGetTargetMoniker>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
 
   <Import Project="$(MSBuildProjectExtensionsPath)$(MSBuildProjectFile).*.props"

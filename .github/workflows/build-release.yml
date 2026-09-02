@@ -82,7 +82,7 @@ jobs:
                 output-file: bin/Sunburst.MRTCore.spdx.json
 
             - name: Upload Release Assets
-              uses: softprops/action-gh-release@v3.0.2
+              uses: softprops/action-gh-release@v3.0.3
               with:
                 draft: true
                 name: 'Standalone MRT Core ${{ steps.update_version.outputs.version_no_v }}'

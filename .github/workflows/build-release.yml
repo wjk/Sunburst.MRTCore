@@ -59,6 +59,12 @@ jobs:
                 $json.version = $version + $suffix
                 $json | ConvertTo-Json | Set-Content src\version.json
 
+                if ($suffix.Length -gt 0) {
+                  echo "beta=true" >> $env:GITHUB_OUTPUT
+                } else {
+                  echo "beta=false" >> $env:GITHUB_OUTPUT
+                }
+
             - name: Nerdbank.GitVersioning
               uses: dotnet/nbgv@master
               id: nbgv
@@ -93,6 +99,7 @@ jobs:
 
             - name: Attest Build
               uses: actions/attest@v4.2.2
+              if: '${{ steps.update_version.outputs.beta }}' == 'false'
               with:
                 subject-path: bin/Packages/Release/*.nupkg
                 sbom-path: bin/Sunburst.MRTCore.spdx.json

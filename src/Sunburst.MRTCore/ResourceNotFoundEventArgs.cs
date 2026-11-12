@@ -16,6 +16,6 @@ public sealed class ResourceNotFoundEventArgs
 
     public void SetResolvedCandidate(ResourceCandidate candidate)
     {
-        throw new NotImplementedException();
+        this.ResolvedCandidate = candidate;
     }
 }

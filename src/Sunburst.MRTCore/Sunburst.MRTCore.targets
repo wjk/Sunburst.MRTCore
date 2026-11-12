@@ -32,7 +32,7 @@
     <Exec Command="&quot;$(MakePriExeFullPath)&quot; new /pr &quot;$(MRTCoreResourceRootAbsolute)&quot; /cf &quot;$(MRTCoreConfigurationFile)&quot; /of &quot;$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri&quot; /o"
           StdOutEncoding="Unicode" StdErrEncoding="Unicode" />
     <Exec Command="&quot;$(MakePriExeFullPath)&quot; resourcepack /pr &quot;$(MRTCoreResourceRootAbsolute)&quot; /cf &quot;$(MRTCoreConfigurationFile)&quot; /if &quot;$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri&quot; /of &quot;$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri&quot; /o"
-          StdOutEncoding="Uniciode" StdErrEncoding="Unicode" />
+          StdOutEncoding="Unicode" StdErrEncoding="Unicode" />
 
     <ItemGroup>
       <_PriFile Include="$(IntermediateOutputPath)$(TargetName)$(_ManualPriSuffix).pri" />

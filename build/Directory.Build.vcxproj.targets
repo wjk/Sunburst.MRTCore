@@ -1,4 +1,3 @@
 <Project>
-  <Import Project="$(MSBuildProjectExtensionsPath)$(MSBuildProjectFile).*.targets"
-        Condition="Exists('$(MSBuildProjectExtensionsPath)$(MSBuildProjectFile).*.targets')" />
+  <!-- This file currently left blank. -->
 </Project>

@@ -4,18 +4,9 @@
     <IntDir>$(BaseIntermediateOutputPath)$(Platform)\$(Configuration)\</IntDir>
     <OutDirWasSet>true</OutDirWasSet>
   </PropertyGroup>
-  
-  <ItemGroup>
-    <ProjectCapability Include="PackageReferences" />
-  </ItemGroup>
 
   <PropertyGroup>
-    <ResolveNuGetPackages>false</ResolveNuGetPackages>
-    <TargetFrameworkMoniker>native,Version=0.0</TargetFrameworkMoniker>
-    <NuGetTargetMoniker>native,Version=0.0</NuGetTargetMoniker>
+    <EnableNativePackageReferenceSupport>true</EnableNativePackageReferenceSupport>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
-
-  <Import Project="$(MSBuildProjectExtensionsPath)$(MSBuildProjectFile).*.props"
-          Condition="Exists('$(MSBuildProjectExtensionsPath)$(MSBuildProjectFile).*.props')" />
 </Project>
